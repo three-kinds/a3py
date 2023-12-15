@@ -1,4 +1,10 @@
-# 0.1.0
+# History
+
+## 0.1.1
+
+1. add simplified/case
+
+## 0.1.0
 
 1. add simplified/datetime
 2. add simplified/hashlib
