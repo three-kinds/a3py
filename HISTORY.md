@@ -1,5 +1,9 @@
 # History
 
+## 0.1.3
+
+* 0.1.2 filename reuse
+
 ## 0.1.2
 
 1. add dynamic/find_all_subclasses
