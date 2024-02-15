@@ -24,6 +24,10 @@ def str2date(str_date: str, str_format: str = STANDARD_DATE_FORMAT) -> date:
     return datetime.strptime(str_date, str_format).date()
 
 
+def date2datetime(target_date: date) -> datetime:
+    return datetime(year=target_date.year, month=target_date.month, day=target_date.day)
+
+
 def timestamp2datetime(timestamp: int) -> datetime:
     return datetime.fromtimestamp(timestamp)
 

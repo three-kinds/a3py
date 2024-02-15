@@ -25,6 +25,13 @@ class T(unittest.TestCase):
             '2019-10-03'
         )
 
+    def test__date2datetime__success(self):
+        day = date(2019, 10, 3)
+        self.assertEqual(
+            dt.date2datetime(day),
+            datetime(year=day.year, month=day.month, day=day.day, hour=0, minute=0, second=0)
+        )
+
     def test__datetime2str__success(self):
         self.assertEqual(
             dt.datetime2str(datetime(2010, 12, 1, 10, 11, 13)),

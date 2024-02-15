@@ -1,5 +1,9 @@
 # History
 
+## 0.1.4
+
+* add simplified/datetime date2datetime
+
 ## 0.1.3
 
 * 0.1.2 filename reuse
