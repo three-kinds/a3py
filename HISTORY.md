@@ -1,5 +1,9 @@
 # History
 
+## 0.1.6
+
+* fix: add tests to sdist
+
 ## 0.1.5
 
 * add dynamic/import_string
