@@ -1,5 +1,9 @@
 # History
 
+## 0.1.5
+
+* add dynamic/import_string
+
 ## 0.1.4
 
 * add simplified/datetime date2datetime

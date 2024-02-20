@@ -21,3 +21,13 @@ class T(unittest.TestCase):
         self.assertTrue(Cat not in bird_class_list)
         self.assertTrue(Bird not in bird_class_list)
         self.assertTrue(Eagle in bird_class_list)
+
+    def test__import_string(self):
+        klass = dynamic.import_string("tests.test_simplified.dynamic.Animal")
+        self.assertTrue(klass is Animal)
+
+        with self.assertRaises(ImportError):
+            dynamic.import_string("test_dynamic")
+
+        with self.assertRaises(ImportError):
+            dynamic.import_string("tests.test_simplified.dynamic.WangZai")

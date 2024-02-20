@@ -24,3 +24,17 @@ def find_all_subclasses(module: str | ModuleType, base_class: Type[T]) -> List[T
             all_subclass_list.append(the_class)
 
     return all_subclass_list
+
+
+def import_string(dotted_path: str):
+    try:
+        module_path, class_name = dotted_path.rsplit(".", 1)
+    except ValueError as err:
+        raise ImportError(f"{dotted_path} doesn't look like a module path") from err
+
+    module = import_module(module_path)
+
+    try:
+        return getattr(module, class_name)
+    except AttributeError as err:
+        raise ImportError(f'Module "{module}" does not define a "{class_name}" attribute/class') from err
