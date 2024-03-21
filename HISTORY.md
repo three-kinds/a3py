@@ -1,5 +1,9 @@
 # History
 
+## 0.1.7
+
+* add simplified/concurrence
+
 ## 0.1.6
 
 * fix: add tests to sdist
