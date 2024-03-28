@@ -1,9 +1,14 @@
 # -*- coding: utf-8 -*-
 import logging
+import os
 from typing import List
 from threading import Thread, Event
 
 logger = logging.getLogger(__name__)
+
+
+def force_exit_from_threads(code: int = -1):
+    os._exit(code)  # noqa
 
 
 def run_threads_until_any_exits(thread_list: List[Thread]):

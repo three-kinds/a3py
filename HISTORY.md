@@ -1,5 +1,9 @@
 # History
 
+## 0.1.8
+
+* add simplified/concurrence.force_exit_from_threads
+
 ## 0.1.7
 
 * add simplified/concurrence

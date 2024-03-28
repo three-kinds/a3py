@@ -8,6 +8,13 @@ from a3py.simplified import concurrence
 
 class T(unittest.TestCase):
 
+    def test__force_exit_from_threads__success(self):
+        import os
+        os._exit = sys.exit
+
+        with self.assertRaises(SystemExit):
+            concurrence.force_exit_from_threads()
+
     def test__run_threads_until_any_exits__success(self):
         class TestThread(Thread):
 
