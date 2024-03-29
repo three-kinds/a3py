@@ -22,7 +22,7 @@ class GracefulExitThread(Thread):
         self.exit_event = exit_event
 
 
-def run_threads_until_any_exits(thread_list: List[GracefulExitThread], exit_event: Event):
+def run_threads_until_any_exits(thread_list: List[Thread], exit_event: Event):
     def _wrap_run(raw_run, event: Event):
         def _wrapper():
             self = raw_run.__self__
