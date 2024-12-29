@@ -1,6 +1,10 @@
 # History
 
-## 0.2.0
+## 0.2.1
+
+* update build package method
+
+---
 
 ## 0.1.9
 

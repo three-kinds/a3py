@@ -47,7 +47,7 @@ def run_threads_until_any_exits(thread_list: List[Thread], exit_event: Event):
             thread.join()
 
 
-def set_exit_signals(exit_event: Event, signal_list: List[int] = None):
+def set_exit_signals(exit_event: Event, signal_list: List[int] | None = None):
     def _signal_handler(sig: int, frame):
         logger.info(f"Received exit signal: {sig}, frame: {frame}")
         exit_event.set()

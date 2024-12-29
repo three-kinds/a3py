@@ -33,6 +33,11 @@ class T(unittest.TestCase):
         os.environ[self.test_key] = str(v)
         self.assertEqual(env.get_int(self.test_key), v)
 
+        sv = 'abc'
+        os.environ[self.test_key] = str(sv)
+        self.assertEqual(env.get_int(self.test_key), None)
+
+
     def test__get_bool(self):
         self.assertEqual(env.get_bool(self.test_key), None)
 

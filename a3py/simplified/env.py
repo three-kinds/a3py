@@ -3,7 +3,7 @@ import os
 from typing import Optional
 
 
-def get_str(key: str, default: str = None) -> Optional[str]:
+def get_str(key: str, default: str | None = None) -> Optional[str]:
     v: Optional[str] = os.getenv(key, None)
     if v in ("None",):
         v = None
@@ -13,8 +13,11 @@ def get_str(key: str, default: str = None) -> Optional[str]:
     return v
 
 
-def get_int(key: str, default: int = None) -> Optional[int]:
-    v: str = get_str(key)
+def get_int(key: str, default: int | None = None) -> Optional[int]:
+    v = get_str(key)
+    if v is None:
+        return default
+
     try:
         return int(v)
     except (TypeError, ValueError):
@@ -22,7 +25,7 @@ def get_int(key: str, default: int = None) -> Optional[int]:
 
 
 def get_bool(key: str, default: Optional[bool] = None) -> Optional[bool]:
-    v: str = get_str(key)
+    v = get_str(key)
     if v is None:
         return default
 

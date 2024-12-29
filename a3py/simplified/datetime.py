@@ -53,14 +53,14 @@ def date_range_reversed(last_date: date, first_date: date) -> Iterator[date]:
         current_date -= timedelta(days=1)
 
 
-def build_first_datetime(day: date = None) -> datetime:
+def build_first_datetime(day: date | None = None) -> datetime:
     if day is None:
         day = date.today()
 
     return datetime.combine(day, datetime.min.time())
 
 
-def build_last_datetime(day: date = None):
+def build_last_datetime(day: date | None = None):
     if day is None:
         day = date.today()
 

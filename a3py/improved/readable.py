@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-def get_readable_size(size: int, round_number: int = 2) -> str:
+def get_readable_size(size: float, round_number: int = 2) -> str:
     """
     Usage::
         >>> get_readable_size(0)

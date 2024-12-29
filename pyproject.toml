@@ -39,3 +39,19 @@ version = {attr = "a3py.__version__"}
 
 [tool.setuptools.packages.find]
 include = ["a3py*"]
+
+[tool.mypy]
+packages = [
+    "a3py",
+    "tests"
+]
+disable_error_code = [
+    "import-untyped",
+    "method-assign"
+]
+
+[tool.ruff]
+src = [
+    "a3py",
+    "tests"
+]

@@ -7,7 +7,8 @@ coverage:
 	coverage html --title="coverage report"
 	python3 -m webbrowser ./htmlcov/index.html
 
-test: coverage
+test:
+	tox -p
 
 build:
 	python -m build
@@ -19,7 +20,8 @@ upload:
 	twine upload dist/* --verbose
 
 format:
-	ruff format a3py tests
+	ruff format
 
 check:
-	ruff check a3py tests
+	ruff check
+	mypy
