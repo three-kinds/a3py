@@ -25,11 +25,11 @@ def get_readable_size(size: int, round_number: int = 2) -> str:
         >>> get_readable_size(1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 10)
         '10240.0PB'
     """
-    unit_list = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
+    unit_list = ["B", "KB", "MB", "GB", "TB", "PB"]
     index = 0
 
     while size >= 1024 and index < len(unit_list) - 1:
         size /= 1024
         index += 1
 
-    return f'{round(size, round_number)}{unit_list[index]}'
+    return f"{round(size, round_number)}{unit_list[index]}"

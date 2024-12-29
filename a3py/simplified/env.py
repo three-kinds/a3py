@@ -5,7 +5,7 @@ from typing import Optional
 
 def get_str(key: str, default: str = None) -> Optional[str]:
     v: Optional[str] = os.getenv(key, None)
-    if v in ('None', ):
+    if v in ("None",):
         v = None
 
     if v is None and default is not None:
@@ -26,7 +26,7 @@ def get_bool(key: str, default: Optional[bool] = None) -> Optional[bool]:
     if v is None:
         return default
 
-    if v in ('True', 'true', 't', '1'):
+    if v in ("True", "true", "t", "1"):
         return True
     else:
         return False

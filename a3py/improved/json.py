@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-import ujson
 from typing import Union
+
+import ujson
 
 _VALID_JSON_TYPE = Union[None, str, int, float, bool, dict, list]
 

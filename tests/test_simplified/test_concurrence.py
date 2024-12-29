@@ -2,14 +2,14 @@
 import os
 import signal
 import sys
-import unittest
 import time
+import unittest
 from threading import Event, Thread
+
 from a3py.simplified import concurrence
 
 
 class T(unittest.TestCase):
-
     def test__set_exit_signals__success(self):
         pid = os.getpid()
         exit_event = Event()
@@ -33,6 +33,7 @@ class T(unittest.TestCase):
 
     def test__force_exit_from_threads__success(self):
         import os
+
         os._exit = sys.exit
 
         with self.assertRaises(SystemExit):
@@ -42,7 +43,6 @@ class T(unittest.TestCase):
         exit_event = Event()
 
         class TestThread(concurrence.GracefulExitThread):
-
             def __init__(self, seconds: int, *args, **kwargs):
                 self.seconds = seconds
                 super().__init__(*args, **kwargs)
@@ -54,7 +54,7 @@ class T(unittest.TestCase):
             TestThread(1, exit_event=exit_event),
             TestThread(2, exit_event=exit_event),
             TestThread(3, exit_event=exit_event),
-            TestThread(4, exit_event=exit_event)
+            TestThread(4, exit_event=exit_event),
         ]
 
         start_tick = time.time()
@@ -66,7 +66,6 @@ class T(unittest.TestCase):
         exit_event = Event()
 
         class TestThread(concurrence.GracefulExitThread):
-
             def __init__(self, seconds: int, *args, **kwargs):
                 self.seconds = seconds
                 super().__init__(*args, **kwargs)
@@ -79,7 +78,7 @@ class T(unittest.TestCase):
             TestThread(1, exit_event=exit_event),
             TestThread(2, exit_event=exit_event),
             TestThread(3, exit_event=exit_event),
-            TestThread(4, exit_event=exit_event)
+            TestThread(4, exit_event=exit_event),
         ]
 
         start_tick = time.time()
@@ -91,7 +90,6 @@ class T(unittest.TestCase):
         exit_event = Event()
 
         class TestThread(concurrence.GracefulExitThread):
-
             def __init__(self, seconds: int, *args, **kwargs):
                 self.seconds = seconds
                 super().__init__(*args, **kwargs)
@@ -104,7 +102,7 @@ class T(unittest.TestCase):
             TestThread(1, exit_event=exit_event),
             TestThread(2, exit_event=exit_event),
             TestThread(3, exit_event=exit_event),
-            TestThread(4, exit_event=exit_event)
+            TestThread(4, exit_event=exit_event),
         ]
 
         start_tick = time.time()

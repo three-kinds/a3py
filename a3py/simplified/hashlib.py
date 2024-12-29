@@ -3,7 +3,7 @@ import hashlib
 
 
 def _hash_method(instance, raw: str) -> str:
-    instance.update(raw.encode('utf-8'))
+    instance.update(raw.encode("utf-8"))
     return instance.hexdigest()
 
 

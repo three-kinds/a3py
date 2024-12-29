@@ -1,22 +1,21 @@
 # -*- coding: utf-8 -*-
 import logging
-import traceback
-import signal
 import os
+import signal
+import traceback
+from threading import Event, Thread
 from typing import List
-from threading import Thread, Event
 
 logger = logging.getLogger(__name__)
 
 
 def force_exit_from_threads(reason: str, code: int = -1):
-    logger.critical(f'About to be forced to exit, reason being: {reason}')
+    logger.critical(f"About to be forced to exit, reason being: {reason}")
     os._exit(code)  # noqa
 
 
 # 适合有阻塞wait的情况
 class GracefulExitThread(Thread):
-
     def __init__(self, exit_event: Event, **params):
         super().__init__(**params)
         self.exit_event = exit_event
@@ -32,7 +31,9 @@ def run_threads_until_any_exits(thread_list: List[Thread], exit_event: Event):
             except SystemExit:
                 logger.warning(f"A thread has exited: {self}")
             except Exception as e:
-                logger.critical(f"A thread has aborted by exception: {self}, {e}, traceback:\n {traceback.format_exc()}")
+                logger.critical(
+                    f"A thread has aborted by exception: {self}, {e}, traceback:\n {traceback.format_exc()}"
+                )
             event.set()
 
         return _wrapper
@@ -48,7 +49,7 @@ def run_threads_until_any_exits(thread_list: List[Thread], exit_event: Event):
 
 def set_exit_signals(exit_event: Event, signal_list: List[int] = None):
     def _signal_handler(sig: int, frame):
-        logger.info(f'Received exit signal: {sig}, frame: {frame}')
+        logger.info(f"Received exit signal: {sig}, frame: {frame}")
         exit_event.set()
 
     signal_list = signal_list or [signal.SIGINT, signal.SIGTERM]

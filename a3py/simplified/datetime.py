@@ -1,18 +1,21 @@
 # -*- coding: utf-8 -*-
-from typing import Iterator
 from copy import deepcopy
-from datetime import datetime, date, timedelta
+from datetime import date, datetime, timedelta
+from typing import Iterator
+
+STANDARD_DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+STANDARD_DATE_FORMAT = "%Y-%m-%d"
 
 
-STANDARD_DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
-STANDARD_DATE_FORMAT = '%Y-%m-%d'
-
-
-def datetime2str(target_datetime: datetime, str_format: str = STANDARD_DATETIME_FORMAT) -> str:
+def datetime2str(
+    target_datetime: datetime, str_format: str = STANDARD_DATETIME_FORMAT
+) -> str:
     return target_datetime.strftime(str_format)
 
 
-def str2datetime(str_datetime: str, str_format: str = STANDARD_DATETIME_FORMAT) -> datetime:
+def str2datetime(
+    str_datetime: str, str_format: str = STANDARD_DATETIME_FORMAT
+) -> datetime:
     return datetime.strptime(str_datetime, str_format)
 
 

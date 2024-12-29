@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-import unittest
 import os
+import unittest
 
 from a3py.simplified import env
 
 
 class T(unittest.TestCase):
-    test_key = 'test_key'
+    test_key = "test_key"
 
     def tearDown(self) -> None:
         super().tearDown()
@@ -15,10 +15,10 @@ class T(unittest.TestCase):
 
     def test__get_str(self):
         self.assertEqual(env.get_str(self.test_key), None)
-        os.environ[self.test_key] = 'None'
+        os.environ[self.test_key] = "None"
         self.assertEqual(env.get_str(self.test_key), None)
 
-        v = 'abc'
+        v = "abc"
         self.assertEqual(env.get_str(self.test_key, default=v), v)
 
         os.environ[self.test_key] = v
@@ -42,5 +42,5 @@ class T(unittest.TestCase):
         os.environ[self.test_key] = str(v)
         self.assertEqual(env.get_bool(self.test_key), v)
 
-        os.environ[self.test_key] = '123'
+        os.environ[self.test_key] = "123"
         self.assertEqual(env.get_bool(self.test_key), False)

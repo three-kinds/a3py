@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 import inspect
-from types import ModuleType
-from typing import Type, List, TypeVar
 from importlib import import_module
+from types import ModuleType
+from typing import List, Type, TypeVar
 
-
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 def find_all_subclasses(module: str | ModuleType, base_class: Type[T]) -> List[Type[T]]:
@@ -37,4 +36,6 @@ def import_string(dotted_path: str):
     try:
         return getattr(module, class_name)
     except AttributeError as err:
-        raise ImportError(f'Module "{module}" does not define a "{class_name}" attribute/class') from err
+        raise ImportError(
+            f'Module "{module}" does not define a "{class_name}" attribute/class'
+        ) from err
