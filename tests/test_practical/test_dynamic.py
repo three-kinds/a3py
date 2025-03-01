@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from a3py.simplified import dynamic
+from a3py.practical import dynamic
 from tests.test_simplified.dynamic import Animal, Bird, Cat, Dog, Eagle
 
 

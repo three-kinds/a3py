@@ -12,7 +12,7 @@ dependencies = [
 authors = [
   {name = "three-kinds", email = "3179158552@qq.com"},
 ]
-description = "Python utils."
+description = "a3py is a python toolkit."
 readme = "README.md"
 license = {text = "Apache 2.0"}
 classifiers = [

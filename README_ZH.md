@@ -1,38 +1,38 @@
 # a3py
 
-English | [简体中文](README_ZH.md)
+[English](README.md) | 简体中文
 
-`a3py` is a python toolkit.
+`a3py`是一个Python工具包。
 
-## 1. Introduction
+## 1. 简介
 
-### Simplified
+### 简化的
 
-* Variable naming style conversion
-* Date and time conversion
-* Environment variables
-* Hashlib
+* 变量命名风格转换
+* 日期时间转换
+* 环境变量
+* hash库
 
-### Improved
+### 改良的
 
-* Faster json(with ujson)
-* Readable
+* 更快的json（使用ujson）
+* 易读的
 
 ### 实践经验的
 
-* Dynamic
-* Concurrence
+* 动态
+* 并发
 
-## 2. Usage
+## 2. 使用
 
-### Install
+### 安装
 
 ```shell script
 pip install a3py
 
 ```
 
-### Examples
+### 样例
 
 ```python
 from datetime import date

@@ -4,7 +4,7 @@ init:
 coverage:
 	coverage erase
 	coverage run --source=a3py -m unittest discover
-	coverage html --title="coverage report"
+	coverage html
 	python3 -m webbrowser ./htmlcov/index.html
 
 test:
