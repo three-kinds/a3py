@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 import signal
 import heapq
-from typing import Dict, List, Callable, Tuple
+from typing import Dict, List, Callable, Tuple, Any
 from itertools import count
 from types import FrameType
 
 from a3py.practical.singleton_meta import SingletonMeta
 
-SignalHandlerType = Callable[[int, FrameType | None], None]
+SignalHandlerType = Callable[[int, FrameType | None], Any]
 
 
 class SignalManager(metaclass=SingletonMeta):
     _counter = count()
     _handlers: Dict[int, List[Tuple[int, int, SignalHandlerType]]] = dict()
-    _default_handler: Dict[int, SignalHandlerType] = dict()
+    _default_handler: Dict[int, SignalHandlerType | int | None] = dict()
 
     def _initialize_signal(self, signal_num: int):
         def _dispatcher(signum: int, frame: FrameType | None):

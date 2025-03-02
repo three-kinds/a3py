@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from threading import Lock
+from typing import Dict, Type
 
 
 class SingletonMeta(type):
-    _instances = dict()
+    _instances: Dict[Type, object] = dict()
     _lock = Lock()
 
     def __call__(cls, *args, **kwargs):
