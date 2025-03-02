@@ -18,10 +18,11 @@ English | [简体中文](README_ZH.md)
 * Faster json(with ujson)
 * Readable
 
-### 实践经验的
+### Practical
 
 * Dynamic
-* Concurrence
+* SingletonMeta
+* SignalManager
 
 ## 2. Usage
 
