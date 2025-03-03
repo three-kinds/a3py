@@ -1,9 +1,12 @@
+PROJECT_NAME = a3py
+
 init:
 	pip3 install -r requirements.txt
+	pip3 install -r requirements-dev.txt
 
 coverage:
 	coverage erase
-	coverage run --source=a3py -m unittest discover
+	coverage run --source=$(PROJECT_NAME) -m unittest discover
 	coverage html
 	python3 -m webbrowser ./htmlcov/index.html
 
