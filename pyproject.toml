@@ -14,7 +14,7 @@ authors = [
 ]
 description = "a3py is a python toolkit."
 readme = "README.md"
-license = {text = "Apache 2.0"}
+license = {text = "MIT"}
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
     "Intended Audience :: Developers",
