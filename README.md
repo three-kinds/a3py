@@ -22,7 +22,7 @@ English | [简体中文](README_ZH.md)
 
 * Dynamic
 * SingletonMeta
-* SignalManager
+* Signal
 
 ## 2. Usage
 

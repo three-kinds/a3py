@@ -55,3 +55,4 @@ src = [
     "a3py",
     "tests"
 ]
+line-length = 120

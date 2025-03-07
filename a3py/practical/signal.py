@@ -1,16 +1,21 @@
 # -*- coding: utf-8 -*-
 import signal
+import sys
 import heapq
-from typing import Dict, List, Callable, Tuple, Any
+from typing import Dict, List, Callable, Tuple
 from itertools import count
 from types import FrameType
 
 from a3py.practical.singleton_meta import SingletonMeta
 
-SignalHandlerType = Callable[[int, FrameType | None], Any]
+SignalHandlerType = Callable[[int, FrameType | None], None]
 
 
-class SignalManager(metaclass=SingletonMeta):
+def exit_0_handler(*_, **__):
+    sys.exit(0)
+
+
+class PrioritizedSignalHandlerManager(metaclass=SingletonMeta):
     _counter = count()
     _handlers: Dict[int, List[Tuple[int, int, SignalHandlerType]]] = dict()
     _default_handler: Dict[int, SignalHandlerType | int | None] = dict()
@@ -24,7 +29,7 @@ class SignalManager(metaclass=SingletonMeta):
 
         self._default_handler[signal_num] = signal.signal(signal_num, _dispatcher)
 
-    def add_handler(self, signum: int, handler: SignalHandlerType, priority: int = 0):
+    def add_handler(self, signum: int, handler: SignalHandlerType, priority: int):
         if signum not in self._handlers:
             self._handlers[signum] = list()
             heapq.heappush(
