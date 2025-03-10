@@ -10,9 +10,7 @@ class T(unittest.TestCase):
         self.assertEqual(dt.str2date("2020-03-01"), date(2020, 3, 1))
 
     def test__str2datetime__success(self):
-        self.assertEqual(
-            dt.str2datetime("2020-03-01 10:01:13"), datetime(2020, 3, 1, 10, 1, 13)
-        )
+        self.assertEqual(dt.str2datetime("2020-03-01 10:01:13"), datetime(2020, 3, 1, 10, 1, 13))
 
     def test__date2str__success(self):
         self.assertEqual(dt.date2str(date(2019, 10, 3)), "2019-10-03")
@@ -21,25 +19,17 @@ class T(unittest.TestCase):
         day = date(2019, 10, 3)
         self.assertEqual(
             dt.date2datetime(day),
-            datetime(
-                year=day.year, month=day.month, day=day.day, hour=0, minute=0, second=0
-            ),
+            datetime(year=day.year, month=day.month, day=day.day, hour=0, minute=0, second=0),
         )
 
     def test__datetime2str__success(self):
-        self.assertEqual(
-            dt.datetime2str(datetime(2010, 12, 1, 10, 11, 13)), "2010-12-01 10:11:13"
-        )
+        self.assertEqual(dt.datetime2str(datetime(2010, 12, 1, 10, 11, 13)), "2010-12-01 10:11:13")
 
     def test__timestamp2datetime__success(self):
-        self.assertEqual(
-            dt.timestamp2datetime(1593706888), datetime(2020, 7, 3, 0, 21, 28)
-        )
+        self.assertEqual(dt.timestamp2datetime(1593706888), datetime(2020, 7, 3, 0, 21, 28))
 
     def test__datetime2timestamp__success(self):
-        self.assertEqual(
-            dt.datetime2timestamp(datetime(2020, 7, 3, 0, 21, 28)), 1593706888
-        )
+        self.assertEqual(dt.datetime2timestamp(datetime(2020, 7, 3, 0, 21, 28)), 1593706888)
 
     def test__date_range(self):
         first_date = date(2020, 1, 1)

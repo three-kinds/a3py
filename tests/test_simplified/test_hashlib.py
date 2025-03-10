@@ -9,9 +9,7 @@ class T(unittest.TestCase):
         self.assertEqual(hashlib.hash_md5("123456"), "e10adc3949ba59abbe56e057f20f883e")
 
     def test__hash_sha1__success(self):
-        self.assertEqual(
-            hashlib.hash_sha1("123456"), "7c4a8d09ca3762af61e59520943dc26494f8941b"
-        )
+        self.assertEqual(hashlib.hash_sha1("123456"), "7c4a8d09ca3762af61e59520943dc26494f8941b")
 
     def test__hash_sha256__success(self):
         self.assertEqual(
