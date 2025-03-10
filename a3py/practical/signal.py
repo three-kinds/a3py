@@ -32,22 +32,16 @@ class PrioritizedSignalHandlerManager(metaclass=SingletonMeta):
     def add_handler(self, signum: int, handler: SignalHandlerType, priority: int):
         if signum not in self._handlers:
             self._handlers[signum] = list()
-            heapq.heappush(
-                self._handlers[signum], (priority, next(self._counter), handler)
-            )
+            heapq.heappush(self._handlers[signum], (priority, next(self._counter), handler))
             self._initialize_signal(signum)
         else:
-            heapq.heappush(
-                self._handlers[signum], (priority, next(self._counter), handler)
-            )
+            heapq.heappush(self._handlers[signum], (priority, next(self._counter), handler))
 
     def remove_handler(self, signum: int, handler: SignalHandlerType):
         if signum in self._handlers:
             original_handlers = self._handlers[signum]
             self._handlers[signum] = [
-                (priority, counter, h)
-                for priority, counter, h in original_handlers
-                if h != handler
+                (priority, counter, h) for priority, counter, h in original_handlers if h != handler
             ]
             heapq.heapify(self._handlers[signum])
 
