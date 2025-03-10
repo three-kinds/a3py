@@ -40,6 +40,13 @@ version = {attr = "a3py.__version__"}
 [tool.setuptools.packages.find]
 include = ["a3py*"]
 
+[tool.coverage.run]
+source = ["a3py"]
+parallel = true
+concurrency = ["multiprocessing"]
+sigterm = false
+
+
 [tool.mypy]
 packages = [
     "a3py",
