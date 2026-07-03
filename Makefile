@@ -19,7 +19,7 @@ clean:
 	rm -rf build dist .egg *.egg-info
 
 upload:
-	uv publish --verbose
+	twine upload dist/* --verbose
 
 format:
 	ruff format
