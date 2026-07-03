@@ -1,3 +1,6 @@
+SHELL := /bin/bash
+.ONESHELL:
+
 PROJECT_NAME = a3py
 
 sync:
@@ -18,8 +21,9 @@ build: clean
 clean:
 	rm -rf build dist .egg *.egg-info
 
-upload:
-	twine upload dist/* --verbose
+publish:
+	source ~/config/env/pypi.sh
+	uv publish --verbose
 
 format:
 	ruff format
