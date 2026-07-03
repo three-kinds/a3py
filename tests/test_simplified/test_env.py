@@ -10,8 +10,7 @@ class T(unittest.TestCase):
 
     def tearDown(self) -> None:
         super().tearDown()
-        if os.environ.get(self.test_key, None):
-            del os.environ[self.test_key]
+        os.environ.pop(self.test_key, None)
 
     def test__get_str(self):
         self.assertEqual(env.get_str(self.test_key), None)

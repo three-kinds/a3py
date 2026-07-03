@@ -3,6 +3,7 @@ import unittest
 
 from a3py.practical import dynamic
 from tests.test_practical.dynamic import Animal, Bird, Cat, Dog, Eagle
+from tests.test_practical import dynamic as test_dynamic
 
 
 class T(unittest.TestCase):
@@ -20,6 +21,13 @@ class T(unittest.TestCase):
         self.assertTrue(Cat not in bird_class_list)
         self.assertTrue(Bird not in bird_class_list)
         self.assertTrue(Eagle in bird_class_list)
+
+        another_animal_class_list = dynamic.find_all_subclasses(test_dynamic, Animal)
+        self.assertTrue(Animal not in another_animal_class_list)
+        self.assertTrue(Dog in another_animal_class_list)
+        self.assertTrue(Cat in another_animal_class_list)
+        self.assertTrue(Bird in another_animal_class_list)
+        self.assertTrue(Eagle in another_animal_class_list)
 
     def test__import_string(self):
         klass = dynamic.import_string("tests.test_practical.dynamic.Animal")

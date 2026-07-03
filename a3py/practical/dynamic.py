@@ -2,7 +2,7 @@
 import inspect
 from importlib import import_module
 from types import ModuleType
-from typing import List, Type, TypeVar
+from typing import List, Type, TypeVar, Any
 
 T = TypeVar("T")
 
@@ -25,7 +25,7 @@ def find_all_subclasses(module: str | ModuleType, base_class: Type[T]) -> List[T
     return all_subclass_list
 
 
-def import_string(dotted_path: str):
+def import_string(dotted_path: str) -> Any:
     try:
         module_path, class_name = dotted_path.rsplit(".", 1)
     except ValueError as err:

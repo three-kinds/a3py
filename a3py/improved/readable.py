@@ -33,3 +33,29 @@ def get_readable_size(size: float, round_number: int = 2) -> str:
         index += 1
 
     return f"{round(size, round_number)}{unit_list[index]}"
+
+
+def get_readable_duration(seconds: float, round_number: int = 2) -> str:
+    """
+    Usage::
+        >>> get_readable_duration(0)
+        '0s'
+        >>> get_readable_duration(1)
+        '1s'
+        >>> get_readable_duration(60)
+        '1.0m'
+        >>> get_readable_duration(3600)
+        '1.0h'
+        >>> get_readable_duration(86400)
+        '1.0d'
+    """
+    unit_info_list = [("s", 60), ("m", 60), ("h", 24), ("d", 0)]
+    duration = seconds
+    index = 0
+    while True:
+        unit, threshold = unit_info_list[index]
+        if duration < threshold or threshold == 0:
+            return f"{round(duration, round_number)}{unit}"
+        else:
+            duration /= threshold
+            index += 1

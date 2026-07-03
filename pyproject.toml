@@ -1,13 +1,9 @@
-[build-system]
-requires = ["setuptools>=61.0.0,<69.3.0"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "a3py"
 dynamic = ["version"]
 requires-python = ">= 3.10"
 dependencies = [
-    "ujson >= 5.2.0",
+    "ujson>=5.2.0",
 ]
 authors = [
   {name = "three-kinds", email = "3179158552@qq.com"},
@@ -16,23 +12,26 @@ description = "a3py is a python toolkit."
 readme = "README.md"
 license = {text = "MIT"}
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
 [project.urls]
 Homepage = "https://github.com/three-kinds/a3py"
 Source = "https://github.com/three-kinds/a3py"
+
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"
 
 [tool.setuptools.dynamic]
 version = {attr = "a3py.__version__"}
@@ -42,8 +41,7 @@ include = ["a3py*"]
 
 [tool.coverage.run]
 source = ["a3py"]
-parallel = true
-concurrency = ["multiprocessing"]
+parallel = false
 sigterm = false
 
 
@@ -53,8 +51,6 @@ packages = [
     "tests"
 ]
 disable_error_code = [
-    "import-untyped",
-    "method-assign"
 ]
 
 [tool.ruff]
@@ -63,3 +59,29 @@ src = [
     "tests"
 ]
 line-length = 120
+
+[dependency-groups]
+dev = [
+    "coverage>=7.15.0",
+    "mypy>=2.1.0",
+    "poethepoet>=0.47.1",
+    "ruff>=0.15.20",
+    "types-ujson>=5.10.0.20250822",
+]
+
+[tool.poe.executor]
+type = "uv"
+
+[tool.poe.tasks.lint]
+sequence = [
+    { cmd = "ruff check" },
+    { cmd = "mypy" }
+]
+
+[tool.poe.tasks.test-py311]
+cmd = "python -m unittest"
+executor = {isolated = true, python = "3.11"}
+
+
+[tool.poe.tasks.test-all]
+sequence = ["test-py311"]

@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-from typing import Union
+from typing import Union, List, Dict
 
 import ujson
 
-_VALID_JSON_TYPE = Union[None, str, int, float, bool, dict, list]
+JsonType = Union[None, bool, int, float, str, List["JsonType"], Dict[str, "JsonType"]]
 
 
-def fast_loads(str_json: str):
+def fast_loads(str_json: str) -> JsonType:
     return ujson.loads(str_json)
 
 
-def fast_dumps(obj: _VALID_JSON_TYPE, ensure_ascii: bool = False) -> str:
-    return ujson.dumps(obj, ensure_ascii=ensure_ascii)
+def fast_dumps(obj: JsonType, ensure_ascii: bool = False, **kwargs) -> str:
+    return ujson.dumps(obj, ensure_ascii=ensure_ascii, **kwargs)

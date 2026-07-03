@@ -1,27 +1,25 @@
 PROJECT_NAME = a3py
 
-init:
-	pip3 install -r requirements.txt
-	pip3 install -r requirements-dev.txt
+sync:
+	uv sync
 
-coverage:
+coverage: format check
 	coverage erase
-	coverage run --source=$(PROJECT_NAME) -m unittest discover
-	coverage combine
+	coverage run --source=$(PROJECT_NAME) --branch -m unittest discover
 	coverage html
-	python3 -m webbrowser ./htmlcov/index.html
+	python -m webbrowser ./htmlcov/index.html
 
 test:
-	tox -p
+	poe test-all
 
-build:
-	python -m build
+build: clean
+	uv build
 
 clean:
 	rm -rf build dist .egg *.egg-info
 
 upload:
-	twine upload dist/* --verbose
+	uv publish --verbose
 
 format:
 	ruff format
